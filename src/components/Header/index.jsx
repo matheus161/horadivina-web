@@ -1,0 +1,30 @@
+import React from "react";
+import styles from "./styles.module.css";
+import { Link } from "react-router-dom";
+import { userContext } from "../../../userContext";
+
+const Header = () => {
+  const { data, userLogout } = React.useContext(userContext);
+
+  return (
+    <header className={styles.header}>
+      <nav className={`${styles.nav} container`}>
+        <Link className={styles.logo} to="/">
+          <img src="../../assets/rezar.png" />
+        </Link>
+        {data ? (
+          <Link className={styles.login} to="/account">
+            {data.name}
+            <button onClick={userLogout}>Sair</button>
+          </Link>
+        ) : (
+          <Link className={styles.login} to="/login">
+            Login / Criar
+          </Link>
+        )}
+      </nav>
+    </header>
+  );
+};
+
+export default Header;

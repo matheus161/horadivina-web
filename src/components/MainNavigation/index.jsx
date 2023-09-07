@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { userContext } from "../../../userContext";
+import { ReactComponent as Home } from "../../assets/feed.svg";
 import { ReactComponent as Adicionar } from "../../assets/adicionar.svg";
 import { ReactComponent as Sair } from "../../assets/sair.svg";
 import styles from "./styles.module.css";
@@ -32,6 +33,9 @@ const MainNavigation = () => {
           mobileMenu && styles.navMobileActive
         }`}
       >
+        <NavLink to="/main" end>
+          <Home /> {mobile && "Página Inicial"}
+        </NavLink>
         <NavLink to="/main/criar" end>
           <Adicionar /> {mobile && "Criar Instituição"}
         </NavLink>

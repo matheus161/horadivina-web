@@ -12,3 +12,13 @@ export function TOKEN_POST(body) {
     },
   };
 }
+
+export function RELIGIONS_GET() {
+  return {
+    url: `${API_URL}/religion`,
+    options: {
+      method: "GET",
+      cache: "no-store",
+    },
+  };
+}

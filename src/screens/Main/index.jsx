@@ -1,8 +1,8 @@
 import React from "react";
 import "./styles.module.css";
-import MainHeader from "../MainHeader";
+import MainHeader from "../../components/MainHeader";
 import { Routes, Route } from "react-router-dom";
-import InstitutionCreate from "../../screens/InstitutionCreate";
+import InstitutionCreate from "../InstitutionCreate";
 
 function Main() {
   return (

@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import { UserStorage } from "../userContext";
-import Main from "./components/Main";
+import Main from "./screens/Main";
 import ProtectedRoute from "./components/Helper/ProtectedRoute/ProtectedRoute";
 
 const App = () => {

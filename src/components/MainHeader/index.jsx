@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import MainNavigation from "../MainNavigation";
 import styles from "./styles.module.css";
 import { useLocation } from "react-router-dom";
+import { userContext } from "../../../userContext";
 
 const MainHeader = () => {
+  const { data } = useContext(userContext);
   const [title, setTitle] = useState("");
   const location = useLocation();
 
@@ -14,13 +16,13 @@ const MainHeader = () => {
         setTitle("Cadastrar Instituição");
         break;
       default:
-        setTitle("Diocese de Estância");
+        setTitle(data.name);
     }
   });
 
   return (
     <header className={styles.header}>
-      <h1 className="title">{title}</h1>
+      <h1 className="title">Olá, {title}</h1>
       <MainNavigation />
     </header>
   );

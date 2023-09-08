@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import { UserStorage } from "../userContext";
 import Main from "./screens/Main";
 import ProtectedRoute from "./components/Helper/ProtectedRoute/ProtectedRoute";
+import InstitutionDetail from "./screens/InstitutionDetail";
 
 const App = () => {
   return (
@@ -23,6 +24,14 @@ const App = () => {
               element={
                 <ProtectedRoute>
                   <Main />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="institution/*"
+              element={
+                <ProtectedRoute>
+                  <InstitutionDetail />
                 </ProtectedRoute>
               }
             />

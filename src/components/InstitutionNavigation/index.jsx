@@ -9,7 +9,6 @@ import styles from "./styles.module.css";
 import useMedia from "../../hooks/userMedia";
 
 const InstitutionNavigation = () => {
-  const { userLogout } = useContext(userContext);
   const mobile = useMedia("(max-width: 40rem)");
   const [mobileMenu, setMobileMenu] = useState(null);
 
@@ -43,10 +42,6 @@ const InstitutionNavigation = () => {
         <NavLink to="/institution/events" end>
           <Estatisticas /> {mobile && "Eventos da Instituição"}
         </NavLink>
-        <button onClick={userLogout}>
-          <Sair />
-          {mobile && "Sair"}
-        </button>
       </nav>
     </>
   );

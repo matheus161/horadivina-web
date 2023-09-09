@@ -6,13 +6,13 @@ import InstitutionField from "../../components/InstitutionFields";
 import NewsList from "../../components/NewsList";
 import EventsList from "../../components/EventsList";
 
-function InstitutionDetail({ institution }) {
+function InstitutionDetail() {
   const { id } = useParams();
   return (
     <section className="container">
       <InstitutionDetailHeader />
       <Routes>
-        <Route path={`/institution`} element={<InstitutionField />} />
+        <Route path="/update" element={<InstitutionField institution={id} />} />
         <Route path="/news" element={<NewsList />} />
         <Route path="/events" element={<EventsList />} />
       </Routes>

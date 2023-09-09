@@ -43,6 +43,20 @@ function InstitutionsList() {
         sexta: "06:30 - 19:00",
         sabado: "06:30 - 19:00",
       },
+      account: {
+        _id: "64ee6419ec75590033125a24",
+        bankName: "Banco do Brasil",
+        accountType: "Conta corrente",
+        agency: "5657-0",
+        accountNumber: "656565",
+        owner: "Paróquia São Salvador",
+      },
+      pix: {
+        _id: "64ee6419ec75590033125a23",
+        owner: "Paróquia de Aracaju",
+        bankName: "Banco do Brasil",
+        key: "123123",
+      },
       __v: 0,
       distancia: "1.90 Km",
       favorite: true,
@@ -85,6 +99,20 @@ function InstitutionsList() {
         quinta: "06:30 - 17:00 - 19:00",
         sexta: "06:30 - 19:00",
         sabado: "06:30 - 19:00",
+      },
+      account: {
+        _id: "64ee6419ec75590033125a24",
+        bankName: "Banco do Brasil",
+        accountType: "Conta corrente",
+        agency: "5657-0",
+        accountNumber: "656565",
+        owner: "Paróquia São Salvador",
+      },
+      pix: {
+        _id: "64ee6419ec75590033125a23",
+        owner: "Paróquia de Aracaju",
+        bankName: "Banco do Brasil",
+        key: "123123",
       },
       __v: 0,
       distancia: "1.90 Km",
@@ -129,48 +157,19 @@ function InstitutionsList() {
         sexta: "06:30 - 19:00",
         sabado: "06:30 - 19:00",
       },
-      __v: 0,
-      distancia: "17.85 Km",
-      favorite: true,
-    },
-    {
-      subscribed: false,
-      favorited: ["646bfa6804ca5000327f818c", "64e179d5a0039800346abc40"],
-      religion: ["64a035022cd23000322927a6"],
-      _id: "64aac8ac1bc84d0033c1af6c",
-      name: "Paróquia da Natividade do Senhor",
-      manager: "Diocese de Estância",
-      avatar:
-        "https://drive.google.com/uc?export=view&id=1D2frnKU-F5nNyloCRZnoyxEGPF_FKn8W",
-      address: {
-        _id: "64aac8ac1bc84d0033c1af6d",
-        cep: "49200-000",
-        street: "Estrada Porto do Mato",
-        number: 1,
-        city: "Porto do Mato",
-        state: "Sergipe",
-        country: "Brasil",
-        lat: "-11.403602060041578",
-        long: "-37.345453921210606",
+      account: {
+        _id: "64ee6419ec75590033125a24",
+        bankName: "Banco do Brasil",
+        accountType: "Conta corrente",
+        agency: "5657-0",
+        accountNumber: "656565",
+        owner: "Paróquia São Salvador",
       },
-      information: {
-        _id: "64aac8ac1bc84d0033c1af6e",
-        number: "",
-        hatsapp: "",
-        email: "",
-        website: "",
-        nstagram: "https://www.instagram.com/catedraldeestancia/",
-        facebook: "",
-      },
-      dailyEvents: {
-        _id: "64dbeb4eef462c00336ef6be",
-        domingo: "06:30 - 10:00 - 17:00 - 19:00",
-        segunda: "06:30 - 19:00",
-        terca: "06:30 - 19:00",
-        quarta: "06:30 - 19:00",
-        quinta: "06:30 - 17:00 - 19:00",
-        sexta: "06:30 - 19:00",
-        sabado: "06:30 - 19:00",
+      pix: {
+        _id: "64ee6419ec75590033125a23",
+        owner: "Paróquia de Aracaju",
+        bankName: "Banco do Brasil",
+        key: "123123",
       },
       __v: 0,
       distancia: "17.85 Km",
@@ -214,6 +213,77 @@ function InstitutionsList() {
         quinta: "06:30 - 17:00 - 19:00",
         sexta: "06:30 - 19:00",
         sabado: "06:30 - 19:00",
+      },
+      account: {
+        _id: "64ee6419ec75590033125a24",
+        bankName: "Banco do Brasil",
+        accountType: "Conta corrente",
+        agency: "5657-0",
+        accountNumber: "656565",
+        owner: "Paróquia São Salvador",
+      },
+      pix: {
+        _id: "64ee6419ec75590033125a23",
+        owner: "Paróquia de Aracaju",
+        bankName: "Banco do Brasil",
+        key: "123123",
+      },
+      __v: 0,
+      distancia: "17.85 Km",
+      favorite: true,
+    },
+    {
+      subscribed: false,
+      favorited: ["646bfa6804ca5000327f818c", "64e179d5a0039800346abc40"],
+      religion: ["64a035022cd23000322927a6"],
+      _id: "64aac8ac1bc84d0033c1af6c",
+      name: "Paróquia da Natividade do Senhor",
+      manager: "Diocese de Estância",
+      avatar:
+        "https://drive.google.com/uc?export=view&id=1D2frnKU-F5nNyloCRZnoyxEGPF_FKn8W",
+      address: {
+        _id: "64aac8ac1bc84d0033c1af6d",
+        cep: "49200-000",
+        street: "Estrada Porto do Mato",
+        number: 1,
+        city: "Porto do Mato",
+        state: "Sergipe",
+        country: "Brasil",
+        lat: "-11.403602060041578",
+        long: "-37.345453921210606",
+      },
+      information: {
+        _id: "64aac8ac1bc84d0033c1af6e",
+        number: "",
+        hatsapp: "",
+        email: "",
+        website: "",
+        nstagram: "https://www.instagram.com/catedraldeestancia/",
+        facebook: "",
+      },
+      dailyEvents: {
+        _id: "64dbeb4eef462c00336ef6be",
+        domingo: "06:30 - 10:00 - 17:00 - 19:00",
+        segunda: "06:30 - 19:00",
+        terca: "06:30 - 19:00",
+        quarta: "06:30 - 19:00",
+        quinta: "06:30 - 17:00 - 19:00",
+        sexta: "06:30 - 19:00",
+        sabado: "06:30 - 19:00",
+      },
+      account: {
+        _id: "64ee6419ec75590033125a24",
+        bankName: "Banco do Brasil",
+        accountType: "Conta corrente",
+        agency: "5657-0",
+        accountNumber: "656565",
+        owner: "Paróquia São Salvador",
+      },
+      pix: {
+        _id: "64ee6419ec75590033125a23",
+        owner: "Paróquia de Aracaju",
+        bankName: "Banco do Brasil",
+        key: "123123",
       },
       __v: 0,
       distancia: "17.85 Km",
@@ -221,12 +291,20 @@ function InstitutionsList() {
     },
   ];
 
+  const handleLinkClick = (institution) => {
+    window.localStorage.setItem("INSTITUTION", JSON.stringify(institution));
+  };
+
   return (
     <>
       <h1>Minhas Instituições</h1>
       <ul>
         {paginatedResults.map((data) => (
-          <Link to={`/institution`} key={data.id}>
+          <Link
+            to={`/institution/update`}
+            key={data.id}
+            onClick={() => handleLinkClick(data)}
+          >
             <InstitutionItem institution={data} />
           </Link>
         ))}

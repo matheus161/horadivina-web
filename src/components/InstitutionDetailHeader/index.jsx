@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { userContext } from "../../../userContext";
 import InstitutionNavigation from "../InstitutionNavigation";
 
-function InstitutionDetailHeader({ id }) {
+function InstitutionDetailHeader() {
   const { data } = useContext(userContext);
   const [title, setTitle] = useState("");
   const location = useLocation();
@@ -19,7 +19,7 @@ function InstitutionDetailHeader({ id }) {
       case "/institution/events":
         setTitle("Eventos");
         break;
-      case `/institution/${id}`:
+      case "/institution/update":
         setTitle("Altere as insformações");
         break;
       default:

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { userContext } from "../../../userContext";
 import { ReactComponent as Home } from "../../assets/feed.svg";
 import { ReactComponent as News } from "../../assets/news.svg";
@@ -9,8 +10,10 @@ import styles from "./styles.module.css";
 import useMedia from "../../hooks/userMedia";
 
 const InstitutionNavigation = () => {
+  const { userLogout } = useContext(userContext);
   const mobile = useMedia("(max-width: 40rem)");
   const [mobileMenu, setMobileMenu] = useState(null);
+  const { id } = useParams();
 
   const { pathname } = useLocation();
   useEffect(() => {
@@ -33,7 +36,7 @@ const InstitutionNavigation = () => {
           mobileMenu && styles.navMobileActive
         }`}
       >
-        <NavLink to="/institution" end>
+        <NavLink to="/institution/update" end>
           <Home /> {mobile && "Instituição"}
         </NavLink>
         <NavLink to="/institution/news" end>
@@ -42,6 +45,10 @@ const InstitutionNavigation = () => {
         <NavLink to="/institution/events" end>
           <Estatisticas /> {mobile && "Eventos da Instituição"}
         </NavLink>
+        <button onClick={userLogout}>
+          <Sair />
+          {mobile && "Sair"}
+        </button>
       </nav>
     </>
   );

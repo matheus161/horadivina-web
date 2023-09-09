@@ -1,5 +1,9 @@
 .link {
   text-decoration: none;
   pointer-events: none;
-  color: inherit;
+  color: #3d423c;
+}
+
+.link:hover {
+  color: #3d423c;
 }

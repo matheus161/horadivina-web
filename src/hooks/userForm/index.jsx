@@ -6,6 +6,18 @@ const types = {
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     message: "Preencha um email válido",
   },
+  number: {
+    regex: /^\d+$/,
+    message: "Utile apenas números",
+  },
+  cep: {
+    regex: /^[\d]{5}-[\d]{3}/,
+    message: "Digite um CEP válido",
+  },
+  phonenumber: {
+    regex: /^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/,
+    message: "Digite um número de telefone válido",
+  },
 };
 
 const useForm = (type) => {

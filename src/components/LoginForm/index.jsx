@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Link, json } from "react-router-dom";
 import styles from "./styles.module.css";
 import Input from "../Forms/Input";
@@ -10,7 +10,7 @@ import Error from "../Helper/Error";
 const LoginForm = () => {
   const email = useForm("email");
   const password = useForm();
-  const { userLogin, error, loading } = React.useContext(userContext);
+  const { userLogin, error, loading } = useContext(userContext);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -23,7 +23,7 @@ const LoginForm = () => {
   return (
     <section className="animeLeft">
       <h1 className="title">Acessar o Sistema</h1>
-      <form className={styles.form} onSubmit={handleSubmit} autoComplete="nope">
+      <form className={styles.form} onSubmit={handleSubmit} autoComplete="none">
         <Input label="Email" type="text" name="email" {...email} />
         <Input label="Password" type="password" name="password" {...password} />
         {loading ? (

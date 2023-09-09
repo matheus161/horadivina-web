@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import InstitutionDetailHeader from "../../components/InstitutionDetailHeader";
 import InstitutionField from "../../components/InstitutionFields";
-import NewsList from "../../components/NewsList";
-import EventsList from "../../components/EventsList";
+import NewsList from "../../screens/NewsList";
+import EventsList from "../../screens/EventsList";
 
 function InstitutionDetail() {
   const { id } = useParams();

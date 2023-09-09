@@ -12,7 +12,7 @@
   align-items: center;
 }
 
-.avatar {
+.image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -23,15 +23,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.name {
-  font-size: 1.2rem;
-  font-weight: bold;
+  text-align: center;
 }
 
 .text {
+  font-size: 1rem;
   color: #3d423c;
+  word-wrap: break-word;
 }
 
 .containerDelete {

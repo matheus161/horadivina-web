@@ -16,7 +16,7 @@ const MainHeader = () => {
         setTitle("Cadastrar Instituição");
         break;
       default:
-        setTitle("Olá, " + data.name);
+        setTitle("Instituições");
     }
   });
 

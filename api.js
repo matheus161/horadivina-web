@@ -22,3 +22,23 @@ export function RELIGIONS_GET() {
     },
   };
 }
+
+export function NEWS_GET({ id, page }) {
+  return {
+    url: `${API_URL}/news/${id}?page=${page}`,
+    options: {
+      method: "GET",
+      cache: "no-store",
+    },
+  };
+}
+
+export function EVENTS_GET({ id, page }) {
+  return {
+    url: `${API_URL}/events/${id}?page=${page}`,
+    options: {
+      method: "GET",
+      cache: "no-store",
+    },
+  };
+}

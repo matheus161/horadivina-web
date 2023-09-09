@@ -179,11 +179,12 @@ function InstitutionFields() {
             value={selectedReligion}
           >
             {religions.map((religion) => (
-              <option key={religion.id} value={religion.name}>
+              <option key={religion._id} value={religion.name}>
                 {religion.name}
               </option>
             ))}
           </select>
+
           <label className={styles.label}>Endereço</label>
           <div className={styles.formDonation}>
             <Input label="CEP" type="text" name="cep" {...cep} />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { userContext } from "../../../userContext";
 import { ReactComponent as Home } from "../../assets/feed.svg";
@@ -8,7 +8,7 @@ import styles from "./styles.module.css";
 import useMedia from "../../hooks/userMedia";
 
 const MainNavigation = () => {
-  const { userLogout } = React.useContext(userContext);
+  const { userLogout } = useContext(userContext);
   const mobile = useMedia("(max-width: 40rem)");
   const [mobileMenu, setMobileMenu] = useState(null);
 

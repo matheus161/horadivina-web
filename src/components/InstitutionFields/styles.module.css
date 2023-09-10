@@ -1,0 +1,39 @@
+.form {
+  margin-bottom: 2rem;
+}
+
+.label {
+  display: block;
+  font-size: 1rem;
+  line-height: 1;
+  padding-bottom: 0.5rem;
+}
+
+.formDonation {
+  /* display: flex; */
+  align-items: center;
+  margin: 1rem;
+}
+
+.select {
+  border: 1px solid #eee;
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.8rem;
+  border-radius: 0.4rem;
+  background: #eee;
+  transition: 0.2s;
+}
+
+.select:focus,
+.select:hover {
+  outline: none;
+  border-color: #3d423c;
+  background: white;
+  box-shadow: 0 0 0 3px #3d423c;
+}
+
+.formSection {
+  margin: 1rem;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import InstitutionItem from "../InstitutionItem";
 import { Link } from "react-router-dom";
+import styles from "./styles.module.css";
 
 function InstitutionsList() {
   const paginatedResults = [
@@ -8,7 +9,7 @@ function InstitutionsList() {
       subscribed: false,
       favorited: ["646bfa6804ca5000327f818c", "64e179d5a0039800346abc40"],
       religion: ["64a035022cd23000322927a6"],
-      _id: "64aa3d31c90d8400324a553b",
+      _id: "64cf2822ce16b300339664df",
       name: "Igreja Nosas Senhora de Fátima",
       manager: "Diocese de Estância",
       avatar:
@@ -43,6 +44,20 @@ function InstitutionsList() {
         sexta: "06:30 - 19:00",
         sabado: "06:30 - 19:00",
       },
+      account: {
+        _id: "64ee6419ec75590033125a24",
+        bankName: "Banco do Brasil",
+        accountType: "Conta corrente",
+        agency: "5657-0",
+        accountNumber: "656565",
+        owner: "Paróquia São Salvador",
+      },
+      pix: {
+        _id: "64ee6419ec75590033125a23",
+        owner: "Paróquia de Aracaju",
+        bankName: "Banco do Brasil",
+        key: "123123",
+      },
       __v: 0,
       distancia: "1.90 Km",
       favorite: true,
@@ -51,7 +66,7 @@ function InstitutionsList() {
       subscribed: false,
       favorited: ["646d492c9fe46207984ec182"],
       religion: ["646e869d26e731106074a25b"],
-      _id: "64aafcdea2c40c00328a9525",
+      _id: "64aa3d31c90d8400324a5512",
       name: "Igreja Nosas Senhora do Rosário",
       manager: "Diocese de Estância",
       avatar:
@@ -86,6 +101,20 @@ function InstitutionsList() {
         sexta: "06:30 - 19:00",
         sabado: "06:30 - 19:00",
       },
+      account: {
+        _id: "64ee6419ec75590033125a24",
+        bankName: "Banco do Brasil",
+        accountType: "Conta corrente",
+        agency: "5657-0",
+        accountNumber: "656565",
+        owner: "Paróquia São Salvador",
+      },
+      pix: {
+        _id: "64ee6419ec75590033125a23",
+        owner: "Paróquia de Aracaju",
+        bankName: "Banco do Brasil",
+        key: "123123",
+      },
       __v: 0,
       distancia: "1.90 Km",
       favorite: false,
@@ -94,7 +123,7 @@ function InstitutionsList() {
       subscribed: false,
       favorited: ["646bfa6804ca5000327f818c", "64e179d5a0039800346abc40"],
       religion: ["64a035022cd23000322927a6"],
-      _id: "64aac8ac1bc84d0033c1af6c",
+      _id: "64aa3d31c90d84001241553b",
       name: "Paróquia da Natividade do Senhor",
       manager: "Diocese de Estância",
       avatar:
@@ -128,6 +157,20 @@ function InstitutionsList() {
         quinta: "06:30 - 17:00 - 19:00",
         sexta: "06:30 - 19:00",
         sabado: "06:30 - 19:00",
+      },
+      account: {
+        _id: "64ee6419ec75590033125a24",
+        bankName: "Banco do Brasil",
+        accountType: "Conta corrente",
+        agency: "5657-0",
+        accountNumber: "656565",
+        owner: "Paróquia São Salvador",
+      },
+      pix: {
+        _id: "64ee6419ec75590033125a23",
+        owner: "Paróquia de Aracaju",
+        bankName: "Banco do Brasil",
+        key: "123123",
       },
       __v: 0,
       distancia: "17.85 Km",
@@ -137,7 +180,7 @@ function InstitutionsList() {
       subscribed: false,
       favorited: ["646bfa6804ca5000327f818c", "64e179d5a0039800346abc40"],
       religion: ["64a035022cd23000322927a6"],
-      _id: "64aac8ac1bc84d0033c1af6c",
+      _id: "64aa3d31c90d8400324a55hg",
       name: "Paróquia da Natividade do Senhor",
       manager: "Diocese de Estância",
       avatar:
@@ -171,6 +214,20 @@ function InstitutionsList() {
         quinta: "06:30 - 17:00 - 19:00",
         sexta: "06:30 - 19:00",
         sabado: "06:30 - 19:00",
+      },
+      account: {
+        _id: "64ee6419ec75590033125a24",
+        bankName: "Banco do Brasil",
+        accountType: "Conta corrente",
+        agency: "5657-0",
+        accountNumber: "656565",
+        owner: "Paróquia São Salvador",
+      },
+      pix: {
+        _id: "64ee6419ec75590033125a23",
+        owner: "Paróquia de Aracaju",
+        bankName: "Banco do Brasil",
+        key: "123123",
       },
       __v: 0,
       distancia: "17.85 Km",
@@ -180,7 +237,7 @@ function InstitutionsList() {
       subscribed: false,
       favorited: ["646bfa6804ca5000327f818c", "64e179d5a0039800346abc40"],
       religion: ["64a035022cd23000322927a6"],
-      _id: "64aac8ac1bc84d0033c1af6c",
+      _id: "64aa3d31c90d8400324a553o",
       name: "Paróquia da Natividade do Senhor",
       manager: "Diocese de Estância",
       avatar:
@@ -214,6 +271,20 @@ function InstitutionsList() {
         quinta: "06:30 - 17:00 - 19:00",
         sexta: "06:30 - 19:00",
         sabado: "06:30 - 19:00",
+      },
+      account: {
+        _id: "64ee6419ec75590033125a24",
+        bankName: "Banco do Brasil",
+        accountType: "Conta corrente",
+        agency: "5657-0",
+        accountNumber: "656565",
+        owner: "Paróquia São Salvador",
+      },
+      pix: {
+        _id: "64ee6419ec75590033125a23",
+        owner: "Paróquia de Aracaju",
+        bankName: "Banco do Brasil",
+        key: "123123",
       },
       __v: 0,
       distancia: "17.85 Km",
@@ -221,14 +292,35 @@ function InstitutionsList() {
     },
   ];
 
+  const handleLinkClick = (institution) => {
+    window.localStorage.setItem("INSTITUTION", JSON.stringify(institution));
+  };
+
+  const handleDelete = (institutionId) => {
+    // Lógica para excluir a instituição com o ID institutionId
+    // Deve perguntar se realmente deseja excluir
+    // chamar
+  };
+
   return (
     <>
-      <h1>Minhas Instituições</h1>
       <ul>
         {paginatedResults.map((data) => (
-          <Link to={`/institution`} key={data.id}>
-            <InstitutionItem institution={data} />
-          </Link>
+          <li key={data._id} className={styles.institutionItemContainer}>
+            <Link
+              to={`/institution/update`}
+              onClick={() => handleLinkClick(data)}
+              className={styles.customLink}
+            >
+              <InstitutionItem institution={data} />
+            </Link>
+            <button
+              className={styles.deleteButton}
+              onClick={() => handleDelete(data._id)}
+            >
+              X
+            </button>
+          </li>
         ))}
       </ul>
     </>

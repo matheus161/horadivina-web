@@ -66,7 +66,7 @@ function InstitutionFields() {
     const storedInstitution = JSON.parse(
       window.localStorage.getItem("INSTITUTION")
     );
-    console.log("STORED", storedInstitution);
+
     if (storedInstitution) {
       name.setValue(storedInstitution.name);
       avatar.setValue(storedInstitution.avatar);

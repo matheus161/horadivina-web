@@ -42,3 +42,31 @@ export function EVENTS_GET({ id, page }) {
     },
   };
 }
+
+export function NEWS_POST(body, token) {
+  return {
+    url: API_URL + "/news",
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
+export function EVENTS_POST(body, token) {
+  return {
+    url: API_URL + "/events",
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}

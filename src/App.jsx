@@ -9,6 +9,8 @@ import { UserStorage } from "../userContext";
 import Main from "./screens/Main";
 import ProtectedRoute from "./components/Helper/ProtectedRoute/ProtectedRoute";
 import InstitutionDetail from "./screens/InstitutionDetail";
+import News from "./screens/News";
+import Events from "./screens/Events";
 
 const App = () => {
   return (
@@ -32,6 +34,22 @@ const App = () => {
               element={
                 <ProtectedRoute>
                   <InstitutionDetail />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="news/*"
+              element={
+                <ProtectedRoute>
+                  <News />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="events/*"
+              element={
+                <ProtectedRoute>
+                  <Events />
                 </ProtectedRoute>
               }
             />

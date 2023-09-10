@@ -13,6 +13,7 @@ function NewsList() {
   const { data, loading, error, request } = useFetch();
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPage, setTotalPage] = useState(0);
+  const [institution, setInstitution] = useState("");
 
   async function fetchNews(page) {
     try {
@@ -20,7 +21,7 @@ function NewsList() {
       const storedInstitution = JSON.parse(
         window.localStorage.getItem("INSTITUTION")
       );
-
+      setInstitution(storedInstitution);
       const { url, options } = EVENTS_GET({
         id: storedInstitution._id,
         page: page,
@@ -49,7 +50,11 @@ function NewsList() {
   if (isLoading || loading) return <Loading />;
   return (
     <>
-      <Link to="/news/add" className={styles.customLink}>
+      <Link
+        to="/events/add"
+        state={{ institution: institution }}
+        className={styles.customLink}
+      >
         <button className={styles.addButton}>Adicionar Evento</button>
       </Link>
       {news.paginatedResults && news.paginatedResults.length > 0 ? (
@@ -58,7 +63,6 @@ function NewsList() {
             {news.paginatedResults.map((data) => (
               <li key={data._id} className={styles.institutionItemContainer}>
                 <NewsItem item={data} />
-
                 <button
                   className={styles.deleteButton}
                   onClick={() => handleDelete(data._id)}

@@ -23,7 +23,7 @@ function InstitutionDetailHeader() {
         setTitle("Altere as insformações");
         break;
       default:
-        setTitle("Altere as insformações do(a) " + data.name);
+        setTitle("Altere as informações do(a) " + data.name);
     }
   });
 

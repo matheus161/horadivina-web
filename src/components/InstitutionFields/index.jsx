@@ -130,47 +130,43 @@ function InstitutionFields() {
           />
           <Input label="Link da imagem" type="text" name="avatar" {...avatar} />
           <label className={styles.label}>Pix</label>
-          <div className={styles.formDonation}>
-            <Input label="Nome" type="text" name="pixName" {...pixName} />
-            <Input label="Banco" type="text" name="pixBank" {...pixBank} />
-            <Input label="Chave" type="text" name="pixKey" {...pixKey} />
-          </div>
+          <Input label="Nome" type="text" name="pixName" {...pixName} />
+          <Input label="Banco" type="text" name="pixBank" {...pixBank} />
+          <Input label="Chave" type="text" name="pixKey" {...pixKey} />
           <label className={styles.label}>Conta Bancária</label>
-          <div className={styles.formDonation}>
-            <Input
-              label="Titular da Conta"
-              type="text"
-              name="accountName"
-              {...accountName}
-            />
-            <Input
-              label="Banco"
-              type="text"
-              name="accountBank"
-              {...accountBank}
-            />
-            <label className={styles.label}>Tipo da Conta</label>
-            <select
-              onChange={(text) => setAccountType(text.target.value)}
-              name="accountType"
-              className={styles.select}
-            >
-              <option value="Conta Corrente">Conta Corrente</option>
-              <option value="Conta Poupança">Conta Poupança</option>
-            </select>
-            <Input
-              label="Agência"
-              type="text"
-              name="accountAgency"
-              {...accountAgency}
-            />
-            <Input
-              label="Número da Conta"
-              type="text"
-              name="accountNumber"
-              {...accountNumber}
-            />
-          </div>
+          <Input
+            label="Titular da Conta"
+            type="text"
+            name="accountName"
+            {...accountName}
+          />
+          <Input
+            label="Banco"
+            type="text"
+            name="accountBank"
+            {...accountBank}
+          />
+          <label className={styles.label}>Tipo da Conta</label>
+          <select
+            onChange={(text) => setAccountType(text.target.value)}
+            name="accountType"
+            className={styles.select}
+          >
+            <option value="Conta Corrente">Conta Corrente</option>
+            <option value="Conta Poupança">Conta Poupança</option>
+          </select>
+          <Input
+            label="Agência"
+            type="text"
+            name="accountAgency"
+            {...accountAgency}
+          />
+          <Input
+            label="Número da Conta"
+            type="text"
+            name="accountNumber"
+            {...accountNumber}
+          />
           <label className={styles.label}>Religião</label>
           <select
             onChange={(religion) => setSelectedReligion(religion.target.value)}
@@ -186,60 +182,44 @@ function InstitutionFields() {
           </select>
 
           <label className={styles.label}>Endereço</label>
-          <div className={styles.formDonation}>
-            <Input label="CEP" type="text" name="cep" {...cep} />
-            <Input label="Logradouro" type="text" name="street" {...street} />
-            <Input label="Número" type="text" name="number" />
-            <Input label="Cidade" type="text" name="city" {...city} />
-            <Input label="Estado" type="text" name="state" {...state} />
-            <Input label="País" type="text" name="country" {...country} />
-            <Input label="Latitude" type="text" name="lat" {...lat} />
-            <Input label="Longitude" type="text" name="long" {...long} />
-          </div>
+          <Input label="CEP" type="text" name="cep" {...cep} />
+          <Input label="Logradouro" type="text" name="street" {...street} />
+          <Input label="Número" type="text" name="number" />
+          <Input label="Cidade" type="text" name="city" {...city} />
+          <Input label="Estado" type="text" name="state" {...state} />
+          <Input label="País" type="text" name="country" {...country} />
+          <Input label="Latitude" type="text" name="lat" {...lat} />
+          <Input label="Longitude" type="text" name="long" {...long} />
           <label className={styles.label}>Informações</label>
-          <div className={styles.formDonation}>
-            <Input
-              label="Número de telefone"
-              type="text"
-              name="phonenumber"
-              {...phonenumber}
-            />
-            <Input label="Whatsapp" type="text" name="whatsapp" {...whatsapp} />
-            <Input label="Email" type="text" name="email" {...email} />
-            <Input label="Website" type="text" name="website" />
-            <Input label="Instagram" type="text" name="instagram" />
-            <Input label="Facebook" type="text" name="facebook" />
-          </div>
+          <Input
+            label="Número de telefone"
+            type="text"
+            name="phonenumber"
+            {...phonenumber}
+          />
+          <Input label="Whatsapp" type="text" name="whatsapp" {...whatsapp} />
+          <Input label="Email" type="text" name="email" {...email} />
+          <Input label="Website" type="text" name="website" />
+          <Input label="Instagram" type="text" name="instagram" />
+          <Input label="Facebook" type="text" name="facebook" />
           <label className={styles.label}>Eventos Diários</label>
-          <div className={styles.formDonation}>
-            <Input
-              label="Segunda-feira"
-              type="text"
-              name="monday"
-              {...monday}
-            />
-            <Input
-              label="Terça-feira"
-              type="text"
-              name="tuesday"
-              {...tuesday}
-            />
-            <Input
-              label="Quarta-feira"
-              type="text"
-              name="wednesday"
-              {...wednesday}
-            />
-            <Input
-              label="Quinta-feira"
-              type="text"
-              name="thursday"
-              {...thursday}
-            />
-            <Input label="Sexta-feira" type="text" name="friday" {...friday} />
-            <Input label="Sábado" type="text" name="saturday" {...saturday} />
-            <Input label="Domingo" type="text" name="sunday" {...sunday} />
-          </div>
+          <Input label="Segunda-feira" type="text" name="monday" {...monday} />
+          <Input label="Terça-feira" type="text" name="tuesday" {...tuesday} />
+          <Input
+            label="Quarta-feira"
+            type="text"
+            name="wednesday"
+            {...wednesday}
+          />
+          <Input
+            label="Quinta-feira"
+            type="text"
+            name="thursday"
+            {...thursday}
+          />
+          <Input label="Sexta-feira" type="text" name="friday" {...friday} />
+          <Input label="Sábado" type="text" name="saturday" {...saturday} />
+          <Input label="Domingo" type="text" name="sunday" {...sunday} />
           <Button>Cadastrar</Button>
         </form>
       </section>

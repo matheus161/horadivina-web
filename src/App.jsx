@@ -54,7 +54,6 @@ const App = () => {
               }
             />
           </Routes>
-          <Footer />
         </UserStorage>
       </BrowserRouter>
     </div>

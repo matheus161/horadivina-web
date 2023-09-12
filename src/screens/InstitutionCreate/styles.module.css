@@ -7,6 +7,9 @@
   font-size: 1rem;
   line-height: 1;
   padding-bottom: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
 }
 
 .formDonation {
@@ -18,12 +21,13 @@
 .select {
   border: 1px solid #eee;
   display: block;
-  width: 100%;
+  width: 51.563rem;
   font-size: 1rem;
   padding: 0.8rem;
   border-radius: 0.4rem;
   background: #eee;
   transition: 0.2s;
+  margin-bottom: 1rem;
 }
 
 .select:focus,

@@ -48,7 +48,7 @@ function EventsCreate() {
   return (
     <section className={"animeLeft"}>
       <header className={styles.header}>
-        <h1 className="title">Cadastre uma notícia</h1>
+        <h1 className="title">Cadastre um evento</h1>
       </header>
       <form className={styles.container} onSubmit={handleSubmit}>
         <Input label="Título" type="text" name="title" {...title} />

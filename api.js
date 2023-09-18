@@ -70,3 +70,27 @@ export function EVENTS_POST(body, token) {
     },
   };
 }
+
+export function INSTITUTION_GET({ id, page }) {
+  return {
+    url: `${API_URL}/institutions/admin/${id}?page=${page}`,
+    options: {
+      method: "GET",
+      cache: "no-store",
+    },
+  };
+}
+
+export function NOTIFY_USERS(body, token) {
+  return {
+    url: API_URL + "/notify",
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}

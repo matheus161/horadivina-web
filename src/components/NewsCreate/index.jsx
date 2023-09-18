@@ -5,7 +5,7 @@ import Button from "../Forms/Button";
 import Error from "../Helper/Error";
 import useForm from "../../hooks/userForm";
 import useFetch from "../../hooks/useFetch";
-import { NEWS_POST } from "../../../api";
+import { NEWS_POST, NOTIFY_USERS } from "../../../api";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function NewsCreate() {
@@ -20,6 +20,19 @@ function NewsCreate() {
   useEffect(() => {
     if (data) navigate("/institution/news");
   }, [data, navigate]);
+
+  async function notifyUsers(token) {
+    const { url, options } = NOTIFY_USERS(
+      {
+        usersId: institution.favorited,
+        subject: title.value,
+        text: description.value,
+      },
+      token
+    );
+    const { response, json } = await request(url, options);
+    console.log("RESPONSE", response);
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -36,6 +49,8 @@ function NewsCreate() {
       token
     );
     request(url, options);
+
+    notifyUsers(token);
   }
 
   function handleImgChange(event) {

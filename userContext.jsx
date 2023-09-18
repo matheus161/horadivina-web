@@ -23,6 +23,7 @@ export const UserStorage = ({ children }) => {
       const { token, admin } = await response.json();
       setData(admin);
       window.localStorage.setItem("TOKEN", token);
+      window.localStorage.setItem("ADMIN", JSON.stringify(admin));
       setLogin(true);
       navigate("/main");
     } catch (err) {

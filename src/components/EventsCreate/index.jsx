@@ -5,7 +5,7 @@ import Button from "../Forms/Button";
 import Error from "../Helper/Error";
 import useForm from "../../hooks/userForm";
 import useFetch from "../../hooks/useFetch";
-import { EVENTS_POST } from "../../../api";
+import { EVENTS_POST, NOTIFY_USERS } from "../../../api";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function EventsCreate() {
@@ -21,6 +21,18 @@ function EventsCreate() {
   useEffect(() => {
     if (data) navigate("/institution/events");
   }, [data, navigate]);
+
+  async function notifyUsers(token) {
+    const { url, options } = NOTIFY_USERS(
+      {
+        usersId: institution.favorited,
+        subject: title.value,
+        text: description.value,
+      },
+      token
+    );
+    await request(url, options);
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -38,6 +50,8 @@ function EventsCreate() {
       token
     );
     request(url, options);
+
+    notifyUsers(token);
   }
 
   function handleImgChange(event) {

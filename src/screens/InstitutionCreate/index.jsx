@@ -3,15 +3,16 @@ import styles from "./styles.module.css";
 import Input from "../../components/Forms/Input";
 import Button from "../../components/Forms/Button";
 import useForm from "../../hooks/userForm";
-import { userContext } from "../../../userContext";
-import { RELIGIONS_GET } from "../../../api";
+import { RELIGIONS_GET, INSTITUTION_POST } from "../../../api";
 import useFetch from "../../hooks/useFetch";
 import Error from "../../components/Helper/Error";
 import Loading from "../../components/Helper/Loading";
+import { useNavigate } from "react-router-dom";
 
 const InstitutionCreate = () => {
-  const { user } = useContext(userContext);
+  const navigate = useNavigate();
   const [accountType, setAccountType] = useState("Conta Corrente");
+  const [religion, setReligion] = useState("");
   const { data, loading, error, request } = useFetch();
   const [religions, setReligions] = useState([]);
   const name = useForm();
@@ -25,6 +26,7 @@ const InstitutionCreate = () => {
   const accountName = useForm();
   const cep = useForm("cep");
   const street = useForm();
+  const houseNumber = useForm("number");
   const city = useForm();
   const state = useForm();
   const country = useForm();
@@ -32,6 +34,10 @@ const InstitutionCreate = () => {
   const long = useForm();
   const phonenumber = useForm("phonenumber");
   const whatsapp = useForm("phonenumber");
+  const email = "";
+  const website = "";
+  const instagram = "";
+  const facebook = "";
   const monday = useForm();
   const tuesday = useForm();
   const wednesday = useForm();
@@ -42,17 +48,62 @@ const InstitutionCreate = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const formData = new FormData();
-    formData.append("name", name.raw);
-    formData.append("manager", user.name.raw);
-    formData.append("avatar", avatar.raw);
-    formData.append("pix.owner", avatar.raw);
+    const token = window.localStorage.getItem("TOKEN");
+    const adminStr = window.localStorage.getItem("ADMIN");
+    const admin = JSON.parse(adminStr);
+    const formData = {
+      name: name.value,
+      manager: admin.name,
+      avatar: avatar.value,
+      pix: {
+        owner: pixName.value,
+        bankName: pixBank.value,
+        key: pixKey.value,
+      },
+      account: {
+        bankName: accountBank.value,
+        accountType: accountType,
+        agency: accountAgency.value,
+        accountNumber: accountNumber.value,
+        owner: accountName.value,
+      },
+      religion: [religion],
+      address: {
+        cep: cep.value,
+        street: street.value,
+        number: houseNumber.value,
+        city: city.value,
+        state: state.value,
+        country: country.value,
+        lat: lat.value,
+        long: long.value,
+      },
+      information: {
+        number: phonenumber.value,
+        whatsapp: whatsapp.value,
+        email: email,
+        website: website,
+        instagram: instagram,
+        facebook: facebook,
+      },
+      dailyEvents: {
+        domingo: sunday.value,
+        segunda: monday.value,
+        terca: tuesday.value,
+        quarta: wednesday.value,
+        quinta: thursday.value,
+        sexta: friday.value,
+        sabado: saturday.value,
+      },
+    };
+    const { url, options } = INSTITUTION_POST(formData, token);
+    request(url, options);
+    navigate("/main");
   }
 
   async function fetchReligions() {
     const { url, options } = RELIGIONS_GET();
     const { response, json } = await request(url, options);
-    console.log(json);
     setReligions(json);
   }
 
@@ -114,12 +165,12 @@ const InstitutionCreate = () => {
 
           <label className={styles.label}>Religião</label>
           <select
-            onChange={(religion) => setAccountType(religion.target.value)}
+            onChange={(religion) => setReligion(religion.target.value)}
             name="accountType"
             className={styles.select}
           >
             {religions.map((religion) => (
-              <option key={religion.id} value={religion.name}>
+              <option key={religion.id} value={religion.id}>
                 {religion.name}
               </option>
             ))}
@@ -127,7 +178,7 @@ const InstitutionCreate = () => {
           <label className={styles.label}>Endereço</label>
           <Input label="CEP" type="text" name="cep" {...cep} />
           <Input label="Logradouro" type="text" name="street" {...street} />
-          <Input label="Número" type="text" name="number" />
+          <Input label="Número" type="text" name="number" {...houseNumber} />
           <Input label="Cidade" type="text" name="city" {...city} />
           <Input label="Estado" type="text" name="state" {...state} />
           <Input label="País" type="text" name="country" {...country} />
@@ -163,6 +214,7 @@ const InstitutionCreate = () => {
           <Input label="Sexta-feira" type="text" name="friday" {...friday} />
           <Input label="Sábado" type="text" name="saturday" {...saturday} />
           <Input label="Domingo" type="text" name="sunday" {...sunday} />
+          {/* {error && <p className={styles.error}>{error}</p>} */}
           <Button>Cadastrar</Button>
         </form>
       </section>

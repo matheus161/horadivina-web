@@ -3,7 +3,7 @@ import InstitutionItem from "../InstitutionItem";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import useFetch from "../../hooks/useFetch";
-import { INSTITUTION_GET } from "../../../api";
+import { INSTITUTION_GET, INSTITUTION_REMOVE } from "../../../api";
 import Error from "../Helper/Error";
 import Loading from "../Helper/Loading";
 
@@ -19,10 +19,21 @@ function InstitutionsList() {
     window.localStorage.setItem("INSTITUTION", JSON.stringify(institution));
   };
 
-  const handleDelete = (institutionId) => {
-    // Lógica para excluir a instituição com o ID institutionId
-    // Deve perguntar se realmente deseja excluir
-    // chamar
+  const handleDelete = async (institutionId) => {
+    const token = window.localStorage.getItem("TOKEN");
+    const { url, options } = INSTITUTION_REMOVE({
+      id: institutionId,
+      token: token,
+    });
+
+    try {
+      const { response, json } = await request(url, options);
+      if (response.status === 200) {
+        fetchInstitutions(currentPage);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   async function fetchInstitutions(page) {
@@ -37,7 +48,6 @@ function InstitutionsList() {
         page: page,
       });
       const { response, json } = await request(url, options);
-      console.log("ADMIN", json);
       setInstitutions(json);
       setTotalPage(Math.floor(json.totalitens / 5));
     } catch (error) {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Helper/Loading";
-import { NEWS_GET } from "../../../api";
+import { NEWS_GET, NEWS_REMOVE } from "../../../api";
 import useFetch from "../../hooks/useFetch";
 import NewsItem from "../../components/NewsItem";
 import Error from "../../components/Helper/Error";
@@ -46,10 +46,21 @@ function NewsList() {
     }
   };
 
-  const handleDelete = (institutionId) => {
-    // Lógica para excluir a instituição com o ID institutionId
-    // Deve perguntar se realmente deseja excluir
-    // chamar
+  const handleDelete = async (institutionId) => {
+    const token = window.localStorage.getItem("TOKEN");
+    const { url, options } = NEWS_REMOVE({
+      id: institutionId,
+      token: token,
+    });
+
+    try {
+      const { response, json } = await request(url, options);
+      if (response.status === 200) {
+        fetchNews(currentPage);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   if (error) return <Error error={error} />;

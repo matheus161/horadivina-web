@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Helper/Loading";
-import { EVENTS_GET } from "../../../api";
+import { EVENTS_GET, EVENTS_REMOVE } from "../../../api";
 import useFetch from "../../hooks/useFetch";
 import NewsItem from "../../components/NewsItem";
 import Error from "../../components/Helper/Error";
@@ -15,7 +15,7 @@ function NewsList() {
   const [totalPage, setTotalPage] = useState(0);
   const [institution, setInstitution] = useState("");
 
-  async function fetchNews(page) {
+  async function fetchEvents(page) {
     try {
       setIsLoading(true);
       const storedInstitution = JSON.parse(
@@ -37,12 +37,29 @@ function NewsList() {
   }
 
   useEffect(() => {
-    fetchNews(currentPage);
+    fetchEvents(currentPage);
   }, [currentPage]);
 
   const handlePageChange = (newPage) => {
     if (newPage >= 0 && newPage <= totalPage) {
       setCurrentPage(newPage);
+    }
+  };
+
+  const handleDelete = async (institutionId) => {
+    const token = window.localStorage.getItem("TOKEN");
+    const { url, options } = EVENTS_REMOVE({
+      id: institutionId,
+      token: token,
+    });
+
+    try {
+      const { response, json } = await request(url, options);
+      if (response.status === 200) {
+        fetchEvents(currentPage);
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 

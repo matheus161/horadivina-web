@@ -30,8 +30,7 @@ function NewsCreate() {
       },
       token
     );
-    const { response, json } = await request(url, options);
-    console.log("RESPONSE", response);
+    await request(url, options);
   }
 
   function handleSubmit(event) {

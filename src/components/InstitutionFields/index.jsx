@@ -3,18 +3,19 @@ import styles from "./styles.module.css";
 import Input from "../../components/Forms/Input";
 import Button from "../../components/Forms/Button";
 import useForm from "../../hooks/userForm";
-import { userContext } from "../../../userContext";
-import { RELIGIONS_GET } from "../../../api";
+import { RELIGIONS_GET, INSTITUTION_UPDATE } from "../../../api";
 import useFetch from "../../hooks/useFetch";
 import Error from "../../components/Helper/Error";
 import Loading from "../../components/Helper/Loading";
+import { useNavigate } from "react-router-dom";
 
 function InstitutionFields() {
-  const { user } = useContext(userContext);
+  const navigate = useNavigate();
   const [accountType, setAccountType] = useState("Conta Corrente");
   const { data, loading, error, request } = useFetch();
   const [religions, setReligions] = useState([]);
   const [selectedReligion, setSelectedReligion] = useState("");
+  const [institution, setInstitution] = useState("");
   const name = useForm(null);
   const avatar = useForm(null);
   const pixName = useForm();
@@ -26,7 +27,7 @@ function InstitutionFields() {
   const accountName = useForm();
   const cep = useForm("cep");
   const street = useForm();
-  const number = useForm("number");
+  const houseNumber = useForm("number");
   const city = useForm();
   const state = useForm();
   const country = useForm();
@@ -46,19 +47,70 @@ function InstitutionFields() {
   const saturday = useForm();
   const sunday = useForm();
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    const formData = new FormData();
-    formData.append("name", name.raw);
-    formData.append("manager", user.name.raw);
-    formData.append("avatar", avatar.raw);
-    formData.append("pix.owner", avatar.raw);
+    const token = window.localStorage.getItem("TOKEN");
+    const adminStr = window.localStorage.getItem("ADMIN");
+    const admin = JSON.parse(adminStr);
+    const formData = {
+      name: name.value,
+      manager: admin.name,
+      avatar: avatar.value,
+      pix: {
+        owner: pixName.value,
+        bankName: pixBank.value,
+        key: pixKey.value,
+      },
+      account: {
+        bankName: accountBank.value,
+        accountType: accountType,
+        agency: accountAgency.value,
+        accountNumber: accountNumber.value,
+        owner: accountName.value,
+      },
+      religion: [selectedReligion],
+      address: {
+        cep: cep.value,
+        street: street.value,
+        number: houseNumber.value,
+        city: city.value,
+        state: state.value,
+        country: country.value,
+        lat: lat.value,
+        long: long.value,
+      },
+      information: {
+        number: phonenumber.value,
+        whatsapp: whatsapp.value,
+        email: email.value,
+        website: website.value,
+        instagram: instagram.value,
+        facebook: facebook.value,
+      },
+      dailyEvents: {
+        domingo: sunday.value,
+        segunda: monday.value,
+        terca: tuesday.value,
+        quarta: wednesday.value,
+        quinta: thursday.value,
+        sexta: friday.value,
+        sabado: saturday.value,
+      },
+    };
+
+    const { url, options } = INSTITUTION_UPDATE(
+      formData,
+      institution._id,
+      token
+    );
+    await request(url, options);
+
+    navigate("/main");
   }
 
   async function fetchReligions() {
     const { url, options } = RELIGIONS_GET();
     const { response, json } = await request(url, options);
-    console.log(json);
     setReligions(json);
   }
 
@@ -67,6 +119,7 @@ function InstitutionFields() {
       window.localStorage.getItem("INSTITUTION")
     );
 
+    setInstitution(storedInstitution);
     if (storedInstitution) {
       name.setValue(storedInstitution.name);
       avatar.setValue(storedInstitution.avatar);
@@ -79,7 +132,7 @@ function InstitutionFields() {
       accountName.setValue(storedInstitution.account.owner);
       cep.setValue(storedInstitution.address.cep);
       street.setValue(storedInstitution.address.street);
-      number.setValue(storedInstitution.address.number);
+      houseNumber.setValue(storedInstitution.address.number);
       city.setValue(storedInstitution.address.city);
       state.setValue(storedInstitution.address.state);
       country.setValue(storedInstitution.address.country);
@@ -98,16 +151,6 @@ function InstitutionFields() {
       friday.setValue(storedInstitution.dailyEvents.sexta);
       saturday.setValue(storedInstitution.dailyEvents.sabado);
       sunday.setValue(storedInstitution.dailyEvents.domingo);
-      if (storedInstitution && storedInstitution.religion) {
-        const selectedReligionId = storedInstitution.religion;
-        const selectedReligionObject = religions.find(
-          (religion) => religion.id === selectedReligionId
-        );
-
-        if (selectedReligionObject) {
-          setSelectedReligion(selectedReligionObject.name);
-        }
-      }
     }
   }
 
@@ -115,6 +158,19 @@ function InstitutionFields() {
     fetchReligions();
     fetchInstitutionFromLocalStorage();
   }, [request]);
+
+  useEffect(() => {
+    if (institution && institution.religion) {
+      const selectedReligionId = institution?.religion[0]?._id;
+      const selectedReligionObject = religions.find(
+        (religion) => religion._id === selectedReligionId
+      );
+
+      if (selectedReligionObject) {
+        setSelectedReligion(selectedReligionObject);
+      }
+    }
+  }, [institution, religions]);
 
   if (error) return <Error error={error} />;
   if (loading) return <Loading />;
@@ -170,12 +226,12 @@ function InstitutionFields() {
           <label className={styles.label}>Religião</label>
           <select
             onChange={(religion) => setSelectedReligion(religion.target.value)}
-            name="accountType"
+            name="selectedReligion"
             className={styles.select}
-            value={selectedReligion}
+            value={selectedReligion._id}
           >
             {religions.map((religion) => (
-              <option key={religion._id} value={religion.name}>
+              <option key={religion._id} value={religion._id}>
                 {religion.name}
               </option>
             ))}
@@ -220,7 +276,7 @@ function InstitutionFields() {
           <Input label="Sexta-feira" type="text" name="friday" {...friday} />
           <Input label="Sábado" type="text" name="saturday" {...saturday} />
           <Input label="Domingo" type="text" name="sunday" {...sunday} />
-          <Button>Cadastrar</Button>
+          <Button>Atualizar</Button>
         </form>
       </section>
     );

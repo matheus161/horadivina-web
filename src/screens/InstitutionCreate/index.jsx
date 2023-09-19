@@ -166,11 +166,11 @@ const InstitutionCreate = () => {
           <label className={styles.label}>Religião</label>
           <select
             onChange={(religion) => setReligion(religion.target.value)}
-            name="accountType"
+            name="religion"
             className={styles.select}
           >
             {religions.map((religion) => (
-              <option key={religion.id} value={religion.id}>
+              <option key={religion._id} value={religion._id}>
                 {religion.name}
               </option>
             ))}

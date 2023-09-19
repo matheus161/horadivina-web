@@ -15,12 +15,12 @@ const Header = () => {
           <Pray />
         </Link>
         {data ? (
-          <Link className={styles.login} to="/account">
+          <Link className={styles.login} to="/main">
             Olá, {data.name}
             {/* <button onClick={userLogout}>Sair</button> */}
           </Link>
         ) : (
-          <Link className={styles.login} to="/login">
+          <Link className={styles.login} to="/">
             Login / Criar
           </Link>
         )}

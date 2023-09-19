@@ -147,3 +147,17 @@ export function INSTITUTION_POST(body, token) {
     },
   };
 }
+
+export function INSTITUTION_UPDATE(body, id, token) {
+  return {
+    url: `${API_URL}/institutions/${id}`,
+    options: {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}

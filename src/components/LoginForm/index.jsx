@@ -33,9 +33,9 @@ const LoginForm = () => {
         )}
         <Error error={error} />
       </form>
-      <Link className={styles.reset} to="/login/reset">
+      {/* <Link className={styles.reset} to="/login/reset">
         Esqueceu sua senha?
-      </Link>
+      </Link> */}
     </section>
   );
 };

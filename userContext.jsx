@@ -40,7 +40,7 @@ export const UserStorage = ({ children }) => {
     setLoading(null);
     setLoading(false);
     window.localStorage.removeItem("TOKEN");
-    navigate("/login");
+    navigate("/");
   }
 
   return (

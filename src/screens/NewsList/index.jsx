@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Helper/Loading";
-import { NEWS_GET } from "../../../api";
+import { NEWS_GET, NEWS_REMOVE } from "../../../api";
 import useFetch from "../../hooks/useFetch";
 import NewsItem from "../../components/NewsItem";
 import Error from "../../components/Helper/Error";
@@ -14,6 +14,8 @@ function NewsList() {
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPage, setTotalPage] = useState(0);
   const [institution, setInstitution] = useState("");
+  const [confirmationModalOpen, setConfirmationModalOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState("");
 
   async function fetchNews(page) {
     try {
@@ -46,10 +48,27 @@ function NewsList() {
     }
   };
 
-  const handleDelete = (institutionId) => {
-    // Lógica para excluir a instituição com o ID institutionId
-    // Deve perguntar se realmente deseja excluir
-    // chamar
+  const handleDelete = async (itemId) => {
+    setItemToDelete(itemId);
+    setConfirmationModalOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    const token = window.localStorage.getItem("TOKEN");
+    const { url, options } = NEWS_REMOVE({
+      id: itemToDelete,
+      token: token,
+    });
+
+    try {
+      const { response, json } = await request(url, options);
+      if (response.status === 200) {
+        setConfirmationModalOpen(false); // Close the confirmation modal
+        fetchNews(currentPage); // Refetch the updated list
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   if (error) return <Error error={error} />;
@@ -100,6 +119,27 @@ function NewsList() {
         </>
       ) : (
         <p>Nenhuma notícia encontrada.</p>
+      )}
+
+      {confirmationModalOpen && (
+        <div className={styles.overlay}>
+          <div
+            className={`${styles.confirmationModal} ${styles.centeredModal}`}
+          >
+            <p>Deseja realmente excluir esta instituição?</p>
+            <div className={styles.buttonContainer}>
+              <button className={styles.confirmButton} onClick={confirmDelete}>
+                Sim
+              </button>
+              <button
+                className={styles.cancelButton}
+                onClick={() => setConfirmationModalOpen(false)}
+              >
+                Não
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </>
   );

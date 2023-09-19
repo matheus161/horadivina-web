@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Helper/Loading";
-import { EVENTS_GET } from "../../../api";
+import { EVENTS_GET, EVENTS_REMOVE } from "../../../api";
 import useFetch from "../../hooks/useFetch";
 import NewsItem from "../../components/NewsItem";
 import Error from "../../components/Helper/Error";
 import styles from "./styles.module.css";
 
-function NewsList() {
+function EventsList() {
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { data, loading, error, request } = useFetch();
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPage, setTotalPage] = useState(0);
   const [institution, setInstitution] = useState("");
+  const [confirmationModalOpen, setConfirmationModalOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState("");
 
-  async function fetchNews(page) {
+  async function fetchEvents(page) {
     try {
       setIsLoading(true);
       const storedInstitution = JSON.parse(
@@ -37,12 +39,35 @@ function NewsList() {
   }
 
   useEffect(() => {
-    fetchNews(currentPage);
+    fetchEvents(currentPage);
   }, [currentPage]);
 
   const handlePageChange = (newPage) => {
     if (newPage >= 0 && newPage <= totalPage) {
       setCurrentPage(newPage);
+    }
+  };
+
+  const handleDelete = async (itemId) => {
+    setItemToDelete(itemId);
+    setConfirmationModalOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    const token = window.localStorage.getItem("TOKEN");
+    const { url, options } = EVENTS_REMOVE({
+      id: itemToDelete,
+      token: token,
+    });
+
+    try {
+      const { response, json } = await request(url, options);
+      if (response.status === 200) {
+        setConfirmationModalOpen(false); // Close the confirmation modal
+        fetchEvents(currentPage); // Refetch the updated list
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -95,8 +120,29 @@ function NewsList() {
       ) : (
         <p>Nenhuma notícia encontrada.</p>
       )}
+
+      {confirmationModalOpen && (
+        <div className={styles.overlay}>
+          <div
+            className={`${styles.confirmationModal} ${styles.centeredModal}`}
+          >
+            <p>Deseja realmente excluir esta instituição?</p>
+            <div className={styles.buttonContainer}>
+              <button className={styles.confirmButton} onClick={confirmDelete}>
+                Sim
+              </button>
+              <button
+                className={styles.cancelButton}
+                onClick={() => setConfirmationModalOpen(false)}
+              >
+                Não
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
 
-export default NewsList;
+export default EventsList;

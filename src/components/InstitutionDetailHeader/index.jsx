@@ -10,7 +10,6 @@ function InstitutionDetailHeader() {
   const location = useLocation();
 
   useEffect(() => {
-    console.log(data);
     const { pathname } = location;
     switch (pathname) {
       case "/institution/news":

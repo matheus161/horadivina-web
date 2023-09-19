@@ -67,3 +67,41 @@
 .deleteButton:hover {
   background-color: #cc0000; /* Cor de fundo do botão de exclusão quando hover */
 }
+
+.centeredModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #eee;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  text-align: center;
+}
+
+.buttonContainer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.confirmButton,
+.cancelButton {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.confirmButton {
+  background-color: #3d423c;
+  color: white;
+}
+
+.cancelButton {
+  background-color: #dc3545;
+  color: white;
+}

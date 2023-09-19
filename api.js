@@ -94,3 +94,70 @@ export function NOTIFY_USERS(body, token) {
     },
   };
 }
+
+export function NEWS_REMOVE({ id, token }) {
+  return {
+    url: `${API_URL}/news/${id}`,
+    options: {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    },
+  };
+}
+
+export function EVENTS_REMOVE({ id, token }) {
+  return {
+    url: `${API_URL}/events/${id}`,
+    options: {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    },
+  };
+}
+
+export function INSTITUTION_REMOVE({ id, token }) {
+  return {
+    url: `${API_URL}/institutions/${id}`,
+    options: {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    },
+  };
+}
+
+export function INSTITUTION_POST(body, token) {
+  return {
+    url: API_URL + "/institutions",
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
+export function INSTITUTION_UPDATE(body, id, token) {
+  return {
+    url: `${API_URL}/institutions/${id}`,
+    options: {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}

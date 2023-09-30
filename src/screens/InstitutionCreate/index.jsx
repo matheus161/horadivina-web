@@ -34,10 +34,10 @@ const InstitutionCreate = () => {
   const long = useForm();
   const phonenumber = useForm("phonenumber");
   const whatsapp = useForm("phonenumber");
-  const email = "";
-  const website = "";
-  const instagram = "";
-  const facebook = "";
+  const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState("");
+  const [instagram, setInstagram] = useState("");
+  const [facebook, setFacebook] = useState("");
   const monday = useForm();
   const tuesday = useForm();
   const wednesday = useForm();
@@ -46,7 +46,7 @@ const InstitutionCreate = () => {
   const saturday = useForm();
   const sunday = useForm();
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const token = window.localStorage.getItem("TOKEN");
     const adminStr = window.localStorage.getItem("ADMIN");
@@ -96,9 +96,10 @@ const InstitutionCreate = () => {
         sabado: saturday.value,
       },
     };
+    console.log(formData);
     const { url, options } = INSTITUTION_POST(formData, token);
-    request(url, options);
-    navigate("/main");
+    const { response } = await request(url, options);
+    if (response.status === 201) navigate("/main");
   }
 
   async function fetchReligions() {
@@ -192,9 +193,34 @@ const InstitutionCreate = () => {
             {...phonenumber}
           />
           <Input label="Whatsapp" type="text" name="whatsapp" {...whatsapp} />
-          <Input label="Website" type="text" name="website" />
-          <Input label="Instagram" type="text" name="instagram" />
-          <Input label="Facebook" type="text" name="facebook" />
+          <Input
+            label="Email"
+            type="text"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Input
+            label="Instagram"
+            type="text"
+            name="instagram"
+            value={instagram}
+            onChange={(e) => setInstagram(e.target.value)}
+          />
+          <Input
+            label="Facebook"
+            type="text"
+            name="facebook"
+            value={facebook}
+            onChange={(e) => setFacebook(e.target.value)}
+          />
+          <Input
+            label="Website"
+            type="text"
+            name="website"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+          />
 
           <label className={styles.label}>Eventos Diários</label>
           <Input label="Segunda-feira" type="text" name="monday" {...monday} />

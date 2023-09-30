@@ -255,9 +255,14 @@ function InstitutionFields() {
           />
           <Input label="Whatsapp" type="text" name="whatsapp" {...whatsapp} />
           <Input label="Email" type="text" name="email" {...email} />
-          <Input label="Website" type="text" name="website" />
-          <Input label="Instagram" type="text" name="instagram" />
-          <Input label="Facebook" type="text" name="facebook" />
+          <Input label="Website" type="text" name="website" {...website} />
+          <Input
+            label="Instagram"
+            type="text"
+            name="instagram"
+            {...instagram}
+          />
+          <Input label="Facebook" type="text" name="facebook" {...facebook} />
           <label className={styles.label}>Eventos Diários</label>
           <Input label="Segunda-feira" type="text" name="monday" {...monday} />
           <Input label="Terça-feira" type="text" name="tuesday" {...tuesday} />
